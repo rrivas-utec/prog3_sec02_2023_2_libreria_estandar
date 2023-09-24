@@ -3,6 +3,7 @@
 #include <vector>
 #include <list>
 #include <forward_list>
+#include "Pregunta2_PC1.h"
 using namespace std;
 
 template<typename T>
@@ -52,12 +53,23 @@ void ejemplo_lista() {
     cout << *it2 << endl;
 }
 
+void ejemplo_pc1_p2() {
+  vector v1 = {1, 2, 3, 4};
+  list l1 = {10, 20, 5, 30};
+  vector v2 = {10, 5, 3, 15};
+  auto [max, data] = max_minimum<vector>(v1, l1, v2);
+  cout << max << endl;
+  for (const auto& item: data) cout << item << " ";
+  cout << endl;
+}
+
 int main() {
 //    A<int> a{10, 20};
 //    std::shared_ptr<A<int>> ptr_a = make_shared<A<int>>(10, 20);
 //    ptr_a->x = 10;
 //    ptr_a->y = 20;
-    ejemplo_lista();
+//    ejemplo_lista();
+    ejemplo_pc1_p2();
 
     return 0;
 }
