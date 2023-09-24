@@ -13,20 +13,20 @@ auto minimum(Container cnt) {
     auto it = begin(cnt);
     if (cnt.size() != 0) {
         auto mn = *it;
-        while (++it != end(cnt)) {
-            if (mn > *it) mn = *it;
-        }
+        while (++it != end(cnt)) if (mn > *it) mn = *it;
         return mn;
     }
     using T = typename Container::value_type;
     return static_cast<T>(-99999);
 }
 
-template <template <typename...> class ContainerResult, template <typename...> class ... Container, typename T>
+template <template <typename...> class ContainerResult,
+          template <typename...> class ... Container,
+          typename T>
 std::pair <T, ContainerResult<T>> max_minimum(Container<T> ... cnts) {
     ContainerResult<T> result;
     (result.push_back(minimum(cnts)), ...);
-    sort(begin(result), end(result));
+    std::sort(begin(result), end(result));
     return {result.back(), result};
 }
 
